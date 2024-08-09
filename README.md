@@ -1,9 +1,8 @@
-Basic crud file which adds, reads, updates and deletes data
+A very basic node application doing CRUD operations with mongodb. they adds, reads, updates and deletes data drom mongoDB using mongoose ODM.
 
-data model:-
-
+Data Model:-
 id: number,
 name: string,
 age: number
 
-data will be stored in ./DB/data.json
+.env file present locally in machine
