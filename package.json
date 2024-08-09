@@ -1,0 +1,18 @@
+{
+  "name": "simple-crud-app",
+  "version": "1.0.0",
+  "description": "implementing crud functionality",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "saptarshi singha roy",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0",
+    "nodemon": "^3.1.4"
+  }
+}
