@@ -1,4 +1,5 @@
-const User = require('../models/user.model')
+const User = require('../models/user.model');
+const ApiResponse = require('../utils/ApiResponse');
 
 
 exports.addUser = (req, res) => {
@@ -7,7 +8,7 @@ exports.addUser = (req, res) => {
         newUser.save()
         .then((savedUser)=>{
             console.log('saved user',savedUser);
-            res.status(201).json({message: "New User Created"})
+            res.status(201).json(new ApiResponse(201, savedUser, "New User Added Successfully"));
         })
         .catch((err)=>{
             console.log('User creation error: ',err);
@@ -23,7 +24,7 @@ exports.getUser = (req, res) => {
     try {
         User.find()
         .then((users)=>{
-            res.status(200).json({data: users})
+            res.status(200).json(new ApiResponse(200, users))
         })
         .catch((err)=>{
             console.log('Unable to fetch data', err);
@@ -45,7 +46,7 @@ exports.getUserById = (req, res) => {
                 res.status(400).json({messege: 'user not found'})
                 return;
             }
-            res.status(200).json({data: user})
+            res.status(200).json(new ApiResponse(200, user, "User Found Successfully"))
         })
         .catch((err)=>{
             console.log('Unable to fetch data', err);
@@ -67,7 +68,7 @@ exports.deleteUser = (req, res) => {
                 res.status(400).json({messege: 'user not found'})
                 return;
             }
-            res.status(200).json({messege: `Deleted Successfully of id ${id}`})
+            res.status(200).json(new ApiResponse(200,user, "User Removed Successfully"))
         })
         .catch((err)=>{
             console.log(err);
@@ -86,7 +87,7 @@ exports.updateUser = (req, res) => {
         User.findByIdAndUpdate(id, reqBody)
         .then((user)=>{
             console.log('user updated ', user);
-            res.status(200).json({messege: 'User updated successfully'});
+            res.status(200).json(new ApiResponse(200,user, "User Updated Successfully"));
         })
         .catch((err)=>{
             console.log('update failed', err);
